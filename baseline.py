@@ -45,3 +45,4 @@ for qnum in questions:
 #Stanford Named Entity Tagger
 #Output 10 most relevant answers using most similar passage
 #That's just reordering words / fitting info into sentence templates
+#Figure what heuristics to use to pull the best words from the 10gram
