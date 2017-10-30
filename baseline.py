@@ -27,34 +27,31 @@ for qnum in questions:
 		#parse docfile into etree
 		qidlist = []
 		textlist = []
-		oneTextfile = False
 		textstring= ""
+		oneTextfile = False
 		for docstring in docfile:
-			if oneTextfile is True:
-				textstring+=docstring
+			
 			#get the qid
 			if docstring.startswith("Qid:"):
 				qidlist.append(docstring)
+				textlist.append(textstring)
+				textstring = ""
+			elif oneTextfile:
+				textstring+=docstring
+
 			#Get all elements that starts with the <text> and end with </text>
+			#since there may be multiple elements in one qid
 			if docstring.startswith("<TEXT>"):
 				oneTextfile = True
 			if docstring.startswith("</TEXT>"):
 				oneTextfile = False
-				textlist.append(textstring)
-				textstring = ""
-		
-		print textlist
-		#len of this is 51
+		#print textlist
 		print len(textlist)
-		print qidlist
-		#len of this more than 51
+		#print qidlist
 		print len(qidlist)
 
-		#i was thinking of zipping them to make tuples fo the lengths are diiferent
-		#the bug is here 
-
-		#qidtextTuple = zip(qidlist, textlist)
-		#print qidtextTuple
+		qidtextTuple = zip(qidlist, textlist)
+			print qidtextTuple
 
 
 
