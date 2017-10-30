@@ -28,12 +28,13 @@ def ngram(textlist, number):
 			ngramlist.append(singleNgram)
 	return ngramlist
 
-
+'''
+questions about vector similarity and etc require more thoughts
 def compare_ngram(text, wordbag):
 	for e in text:
 		if e is in wordbag:
 			count+=1
-
+'''
 #question processing: remove stop words from question
 with open("qadata/train/questions.txt") as question_file:
 	question_list = list(filter(None,question_file.read().split("\n")))
