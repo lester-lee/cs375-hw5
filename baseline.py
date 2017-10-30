@@ -16,6 +16,24 @@ def preprocess(s, getstopwords=False):
         else:
                 return [w for w in s if not w in stopword_list]
 
+#find the ngram 
+# the number = n
+def ngram(textlist, number):
+	for text in textlist:
+		ngramlist =[]
+		for n in range(len(text)-number+1):
+			singleNgram = []
+			for e in range(number):
+				singleNgram.append(text[e+n])
+			ngramlist.append(singleNgram)
+	return ngramlist
+
+
+def compare_ngram(text, wordbag):
+	for e in text:
+		if e is in wordbag:
+			count+=1
+
 #question processing: remove stop words from question
 with open("qadata/train/questions.txt") as question_file:
 	question_list = list(filter(None,question_file.read().split("\n")))
@@ -25,6 +43,7 @@ with open("qadata/train/questions.txt") as question_file:
 		qnum = question_list[i].split()[-1]
 		question = preprocess(question_list[i+1], getstopwords=True)
 		questions[qnum] = question
+		#print questions
 #questions is a dictionary {question#: question tokens}
 		
 #passage retrieval
@@ -49,10 +68,11 @@ for qnum in questions:
                         texts = textRE.findall(textchunk)
                         tempstring = " ".join(texts)
                         parsedtextlist.append(preprocess(tempstring))
-
+                #print parsedtextlist
+                print ngram(parsedtextlist, 10)
 		qidtextTuple = zip(qidlist, parsedtextlist)
-		print(qidtextTuple)
-                
+		#print(qidtextTuple)
+            
 		#retrieve appropriate 10-grams
 		#map each 10-gram to binary feature vector with question as bag of words
 		#compute vector similarity score between question & each feature vector
