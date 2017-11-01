@@ -2,6 +2,7 @@
 import string, re
 from nltk.corpus import stopwords
 from nltk import word_tokenize
+from collections import Counter
 
 stopword_list = stopwords.words('english')
 def preprocess(s, getstopwords=False):
@@ -29,19 +30,22 @@ def ngram(textlist, number, questions):
 			compare_ngram(ngramlist, questions)
 	return ngramlist
 
-#since the vector are [1 1 1 1] *[ x y z w] where x,y,z,w are the frequency of each word from the wordbag, 
-#we can compute this by summing all the x,y,z,w together. 
-#the length of the vector is determined by the wordbag.
+'''
+since the vector are [1 1 1 1] *[ x y z w] where x,y,z,w are the frequency of each word from the wordbag, 
+we can compute this by summing all the x,y,z,w together. 
+the length of the vector is determined by the wordbag.
+this returns a list of tuples [(10gram, freq)...]
+'''
 def compare_ngram(ngramlist, wordbag):
 	frequency = []
 	for e in ngramlist:
 		# e is a list of tokens
-		#
-		#help pls
-		#i want to use the findall expression.
-		# is it possible to use the findall regular expression on it?
-		#
-		frequency.append(sum(len(e.findall(y for y in wordbag)), e))
+                freqs = Counter(e)
+                res = 0
+                for word in freqs:
+                        if word in wordbag:
+                                res += freqs[word]
+                frequency.append((res, e))
 	return frequency
 
 #question processing: remove stop words from question
