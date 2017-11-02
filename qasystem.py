@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 from collections import Counter
 
-stopword_list = stopwords.words('english')
+stopword_list = stopwords.words('english') + [u'p']
 def preprocess(s, getstopwords=False):
         #given s, tokenize and remove punctuation
         s = s.lower()
@@ -19,7 +19,7 @@ def preprocess(s, getstopwords=False):
 
 #find the ngram 
 # the number = n
-def ngram(textlist, number, questions):
+def find_best_ngram(textlist, number, questions):
 	for text in textlist:
 		ngramlist =[]
 		for n in range(len(text)-number+1):
@@ -57,9 +57,8 @@ with open("qadata/train/questions.txt") as question_file:
 		qnum = question_list[i].split()[-1]
 		question = preprocess(question_list[i+1], getstopwords=True)
 		questions[qnum] = question
-		#print questions
-		#print questions
-#questions is a dictionary {question#: question tokens}
+
+#questions is a dictionary {question#: (question tokens,stopwords)}
 		
 #passage retrieval
 for qnum in questions:
@@ -84,7 +83,7 @@ for qnum in questions:
                         tempstring = " ".join(texts)
                         parsedtextlist.append(preprocess(tempstring))
                 #print parsedtextlist
-                print ngram(parsedtextlist, 10, questions.get(qnum)[0])
+                print find_best_ngram(parsedtextlist, 10, questions[qnum][0])
 		qidtextTuple = zip(qidlist, parsedtextlist)
 		#print(qidtextTuple)
             
@@ -94,9 +93,10 @@ for qnum in questions:
 		#retrieve the most-similar one
 
 
-#answer formation
-#Find the sentence that gave highest score (some way of tracking this)
-#Stanford Named Entity Tagger
-#Output 10 most relevant answers using most similar passage
-#That's just reordering words / fitting info into sentence templates
-#Figure what heuristics to use to pull the best words from the 10gram
+                #answer formation
+                #Find the sentence that gave highest score (some way of tracking this)
+                best_sentence = ["a","b","c","d","e"]
+                #Stanford Named Entity Tagger
+                #Output 10 most relevant answers using most similar passage
+                #That's just reordering words / fitting info into sentence templates
+                #Figure what heuristics to use to pull the best words from the 10gram
