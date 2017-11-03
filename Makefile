@@ -1,2 +1,2 @@
 all:
-	python baseline.py
+	python qasystem.py

@@ -1,21 +1,20 @@
 #Lester Lee & Vincent Lin
-import string, re
+import string, re, nltk
 from nltk.corpus import stopwords
-from nltk import word_tokenize
 from collections import Counter
+from nltk import word_tokenize, pos_tag
 
 stopword_list = stopwords.words('english') + [u'p']
 def preprocess(s, getstopwords=False):
         #given s, tokenize and remove punctuation
-        s = s.lower()
         s = word_tokenize(s)
         s = [w.translate(None, string.punctuation) for w in s]
         s = list(filter(None, s))
         if getstopwords:
-                return ([w for w in s if not w in stopword_list],
-                        [w for w in s if w in stopword_list])
+                return ([w for w in s if not w.lower() in stopword_list],
+                        [w for w in s if w.lower() in stopword_list])
         else:
-                return [w for w in s if not w in stopword_list]
+                return [w for w in s if not w.lower() in stopword_list]
 
 #find the ngram 
 # the number = n
@@ -82,21 +81,22 @@ for qnum in questions:
                         texts = textRE.findall(textchunk)
                         tempstring = " ".join(texts)
                         parsedtextlist.append(preprocess(tempstring))
+                        
                 #print parsedtextlist
-                print find_best_ngram(parsedtextlist, 10, questions[qnum][0])
-		qidtextTuple = zip(qidlist, parsedtextlist)
+                #print find_best_ngram(parsedtextlist, 10, questions[qnum][0])
+		qidtextTuple = zip(qidlist, parsedtextlist[1:])
 		#print(qidtextTuple)
-            
-		#retrieve appropriate 10-grams
-		#map each 10-gram to binary feature vector with question as bag of words
-		#compute vector similarity score between question & each feature vector
-		#retrieve the most-similar one
 
-
+                
                 #answer formation
                 #Find the sentence that gave highest score (some way of tracking this)
-                best_sentence = ["a","b","c","d","e"]
+                best_sentence = "soya agricultural exports roads rather railways become focus attention Bolivia".split()
                 #Stanford Named Entity Tagger
+                best_sentence = pos_tag(best_sentence)
+                best_ne = nltk.ne_chunk(best_sentence)
+                print(best_ne)
                 #Output 10 most relevant answers using most similar passage
                 #That's just reordering words / fitting info into sentence templates
                 #Figure what heuristics to use to pull the best words from the 10gram
+
+                break
