@@ -1,30 +1,35 @@
 #Lester Lee & Vincent Lin
 import string, re, nltk, codecs
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 from nltk.corpus import stopwords
 from collections import Counter
 from nltk import word_tokenize, pos_tag
-
+from nltk.tag import StanfordNERTagger
 from nltk.stem import SnowballStemmer
+from nltk.tokenize import RegexpTokenizer
+tokenizer = RegexpTokenizer(r'\w+')
 snowball_stemmer = SnowballStemmer('english')
 stopword_list = stopwords.words('english') + [u'p']
 
-stanford_classifier = '/Users/michaelqi/Downloads/stanford-ner-2017-06-09/classifiers/english.all.7class.distsim.crf.ser.gz'
-
+stanford_classifier = '/Users/michaelqi/Downloads/stanford-ner-2017-06-09/classifiers/english.all.3class.distsim.crf.ser.gz'
 stanford_ner_path = '/Users/michaelqi/Downloads/stanford-ner-2017-06-09/stanford-ner.jar'
 st = StanfordNERTagger(stanford_classifier, stanford_ner_path, encoding='utf-8')
 
 
-def preprocess(s, getstopwords=False, stopwords=False):
+def preprocess(s, getstopwords=False, stopwords=False, text = False):
         #given s, tokenize and remove punctuation
-#        s = str(s)
-        s = word_tokenize(s)
-       # s = [w.translate(None, string.punctuation) for w in s]
-        s = list(filter(None, s))
-        s = [snowball_stemmer.stem(w) for w in s]
+        #s = [snowball_stemmer.stem(w) for w in s]
+        if text:
+                s = nltk.sent_tokenize(s)
+                s = [tokenizer.tokenize(e) for e in s]
+                s = list(filter(None, s))
+        else:
+                s = tokenizer.tokenize(s)
+                s = list(filter(None, s))
         if getstopwords:
                 return ([w for w in s if not w.lower() in stopword_list],
                         [w for w in s if w.lower() in stopword_list])
@@ -34,19 +39,24 @@ def preprocess(s, getstopwords=False, stopwords=False):
                 return s
 #find the ngram 
 # the number = n
-def find_best_ngram(textlist, number, questions, qidlist):
-	for i in range(len(textlist)):
+#textlist = list of list of textual passages
+# work on deeper passage seperation instead of text seperation
+def find_best_passages(textlist, questions, qidlist):
+	best = []
+        for i in range(len(textlist)):
                 text = textlist[i]
                 qid = qidlist[i]
                 score = float(qid.split()[-1])
 		ngramlist =[]
-                best = []
-		for n in range(len(text)-number+1):
+                '''
+                for n in range(len(text)-number+1):
 			singleNgram = []
 			for e in range(number):
 				singleNgram.append(text[e+n])
 			ngramlist.append(singleNgram)
-		best.append(compare_ngram(ngramlist, questions, score))
+		'''
+                best.append(compare_ngram(text, questions, score))
+        print best
 	return best
 
 '''
@@ -54,16 +64,14 @@ since the vector are [1 1 1 1] *[ x y z w] where x,y,z,w are the frequency of ea
 we can compute this by summing all the x,y,z,w together. 
 the length of the vector is determined by the wordbag.
 this returns a list of tuples [(10gram, freq)...]
-
-
 '''
 def compare_ngram(ngramlist, wordbag, score):
         frequency = []
         maximum = 1     
 	for e in ngramlist:
-		# e is a list of tokens
+		# e is a list of tokens           
                 freqs = Counter(e)
-                res = sum([freqs[word] for word in freqs if word in wordbag]) #* float(score)
+                res = sum([freqs[word] for word in freqs if word in wordbag]) * float(score)
                 #only save the maximum 
                 if res == maximum:
                         maximum = res
@@ -114,7 +122,7 @@ with codecs.open("qadata/train/questions.txt", encoding = 'utf-8') as question_f
 		qnum = question_list[i].split()[-1]
 		question = preprocess(question_list[i+1], getstopwords=True)
 		questions[qnum] = question
-                #print questions[qnum]
+                print questions[qnum]
 #questions is a dictionary {question#: (question tokens,stopwords)}
 		
 finalanswers = []
@@ -146,14 +154,13 @@ for qnum in range(0, 150):
                         for textchunk in textlist:
                                 texts = textRE.findall(textchunk)
                                 tempstring = " ".join(texts)
-                                parsedtextlist.append(preprocess(tempstring,getstopwords=False, stopwords=False))
-                                #parsedtextlist.append(tempstring)
-                        
+                                parsedtextlist.append(preprocess(tempstring,text =True))
+                                #print parsedtextlist
                         #potential bug the stopword removed the word "won".
                        # print questions[qnum]
-                        #print parsedtextlist
-                        bestngram = find_best_ngram(parsedtextlist, 10, questions[qnum][0], qidlist)
-        		print bestngram
+                        print parsedtextlist
+                        bestngram = find_best_passages(parsedtextlist, 10, questions[qnum][0], qidlist)
+        		#print bestngram
                         qidtextTuple = zip(qidlist, parsedtextlist[1:])
         		#print(qidtextTuple)
 
@@ -177,7 +184,7 @@ for qnum in range(0, 150):
                         #answers = heuristic_list(best_ne, questions[qnum])
                         finalanswers.append("qid {}".format(qnum))
                         finalanswers += answers
-
+                        break
                         #best_sentence = "soya agricultural exports roads rather railways become focus attention Bolivia".split()
                         #Stanford Named Entity Tagger
                         
