@@ -14,18 +14,18 @@ from nltk.tokenize import RegexpTokenizer
 tokenizer = RegexpTokenizer(r'\w+')
 snowball_stemmer = SnowballStemmer('english')
 stopword_list = stopwords.words('english') + [u'p']
-
+'''
 stanford_classifier = '/Users/michaelqi/Downloads/stanford-ner-2017-06-09/classifiers/english.all.3class.distsim.crf.ser.gz'
 stanford_ner_path = '/Users/michaelqi/Downloads/stanford-ner-2017-06-09/stanford-ner.jar'
 st = StanfordNERTagger(stanford_classifier, stanford_ner_path, encoding='utf-8')
-
+'''
 
 def preprocess(s, getstopwords=False, stopwords=False, text = False):
         #given s, tokenize and remove punctuation
         #s = [snowball_stemmer.stem(w) for w in s]
         if text:
                 s = nltk.sent_tokenize(s)
-                s = [tokenizer.tokenize(e) for e in s]
+                s = [nltk.word_tokenize(e) for e in s]
                 s = list(filter(None, s))
         else:
                 s = tokenizer.tokenize(s)
@@ -42,21 +42,30 @@ def preprocess(s, getstopwords=False, stopwords=False, text = False):
 #textlist = list of list of textual passages
 # work on deeper passage seperation instead of text seperation
 def find_best_passages(textlist, questions, qidlist):
-	best = []
+        best = []
         for i in range(len(textlist)):
                 text = textlist[i]
                 qid = qidlist[i]
                 score = float(qid.split()[-1])
-		ngramlist =[]
                 '''
                 for n in range(len(text)-number+1):
 			singleNgram = []
 			for e in range(number):
 				singleNgram.append(text[e+n])
 			ngramlist.append(singleNgram)
-		'''
+		'''	
                 best.append(compare_ngram(text, questions, score))
-        print best
+        best = list(filter(None, best))
+        best = sorted(best, reverse = True)[:5]
+        finallist = []
+        for e in best:
+        	for i in range(len(e)):
+        		if i is not 0:
+        			finalstring = ""
+        			for text in e[i]:
+        				finalstring+= " "+text
+        			finallist.append([finalstring])
+        print finallist
 	return best
 
 '''
@@ -65,27 +74,27 @@ we can compute this by summing all the x,y,z,w together.
 the length of the vector is determined by the wordbag.
 this returns a list of tuples [(10gram, freq)...]
 '''
-def compare_ngram(ngramlist, wordbag, score):
+def compare_ngram(text, wordbag, score):
         frequency = []
         maximum = 1     
-	for e in ngramlist:
+	for e in text:
 		# e is a list of tokens           
                 freqs = Counter(e)
                 res = sum([freqs[word] for word in freqs if word in wordbag]) * float(score)
                 #only save the maximum 
                 if res == maximum:
                         maximum = res
-                        frequency.append((res, e))
+                        frequency.append(e)
                         #frequency.append(e)
                 elif res > maximum:
                         frequency =[]
                         maximum = res
-                        #frequency.append(e)
-
-                        frequency.append((res, e))
+                        frequency.append(res)
+                        frequency.append(e)
 	return frequency
 
 def heuristic_list(best_ne, question):
+        '''
         people = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "PERSON"]
         gpes = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "GPE"]
         locations = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "LOCATION"]
@@ -96,6 +105,7 @@ def heuristic_list(best_ne, question):
         money = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "MONEY"]
         facility = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "FACILITY"]
         nouns = [leaf[0] for leaf in best_ne if not isinstance(leaf, nltk.tree.Tree) and "NN" in leaf[1]]
+        '''
         answers = []
         if "where" in question[1]:
                 answers = locations+facility
@@ -158,11 +168,11 @@ for qnum in range(0, 150):
                                 #print parsedtextlist
                         #potential bug the stopword removed the word "won".
                        # print questions[qnum]
-                        print parsedtextlist
-                        bestngram = find_best_passages(parsedtextlist, 10, questions[qnum][0], qidlist)
-        		#print bestngram
+                        #print parsedtextlist
+                        bestngram = find_best_passages(parsedtextlist, questions[qnum][0], qidlist)
+        				#print bestngram
                         qidtextTuple = zip(qidlist, parsedtextlist[1:])
-        		#print(qidtextTuple)
+        				#print(qidtextTuple)
 
                         #answer formation
                         #Find the sentence that gave highest score (some way of tracking this)
