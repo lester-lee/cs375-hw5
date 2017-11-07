@@ -142,7 +142,20 @@ def heuristic_list(best_ne, pos_tag, question):
                 answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
         else:
                 answers = namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "PERSON")
-        #answers += nouns
+
+        #find noun phrases
+        nounphrases = []
+        tempphrase = []
+        for i in range(len(pos_tag)):
+                taggedword = pos_tag[i]
+                word = taggedword[0]
+                tag = taggedword[1]
+                if tag in ["NN", "DT"]:
+                        tempphrase.append(word)
+                else:
+                        nounphrases.append(" ".join(tempphrase))
+                        tempphrase = []
+        answers += nounphrases
         print answers[:10]
         return answers[:10]
 
