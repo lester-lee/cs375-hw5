@@ -32,7 +32,7 @@ def preprocess(s, getstopwords=False, stopwords=False, text = False):
                 s = list(filter(None, s))
         if getstopwords:
                 return ([w for w in s if not w.lower() in stopword_list],
-                        [w for w in s if w.lower() in stopword_list])
+                        [w.lower() for w in s if w.lower() in stopword_list])
         elif stopwords:
                 return [w for w in s if not w.lower() in stopword_list]
         else:
@@ -127,37 +127,40 @@ def heuristic_list(best_ne, pos_tag, question):
 
         answers = []
         if "where" in question[1]:
-                answers = namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "PERSON")
+                answers = namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "ORGANIZATION")
         elif "who" in question[1]:
                 answers = namedEntitySearch(NamedEntities, "PERSON")+namedEntitySearch(NamedEntities, "ORGANIZATION")
-        elif "when" in question[1]:
+        elif "when" in question[1] or "year" in question[0]:
                 answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
-        elif "how" in question[1]:
+        elif "how" in question[1] or "population" in question[0]:
                 answers = namedEntitySearch(NamedEntities, "PERCENT")+namedEntitySearch(NamedEntities, "MONEY")+namedEntitySearch(NamedEntities, "TIME")
         elif "name" in question[0]:
                 answers = namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "PERSON")
         elif "date" in question[0] or "time" in question[0]:
                 answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
-        elif "what_is" in question[1]:
-                answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
         else:
-                answers = namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "PERSON")
+                answers = namedEntitySearch(NamedEntities, "ORGANIZATION")[:2]+namedEntitySearch(NamedEntities, "LOCATION")[:2]+namedEntitySearch(NamedEntities, "PERSON")[:2]
 
         #find noun phrases
         nounphrases = []
         tempphrase = []
-        for i in range(len(pos_tag)):
-                taggedword = pos_tag[i]
-                word = taggedword[0]
-                tag = taggedword[1]
-                if tag in ["NN", "DT"]:
-                        tempphrase.append(word)
-                else:
-                        nounphrases.append(" ".join(tempphrase))
-                        tempphrase = []
+        print question
+        for sentence in pos_tag:
+            for i in range(len(sentence)):
+                    taggedword = sentence[i]
+                    word = taggedword[0]
+                    tag = taggedword[1]
+                    if tag in ["NN", "POS", "JJ", "JJR", "JJS", "NNS"]:
+                            tempphrase.append(word)
+                    else:
+                            nounphrases.append(" ".join(tempphrase))
+                            tempphrase = []
+        nounphrases = sorted(set(nounphrases), key = nounphrases.count, reverse=True)
+        nounphrases = [n for n in nounphrases if not n in ["<",">", "P", "the", '']]
+        nounphrases = [n for n in nounphrases if not n in question[0]]
         answers += nounphrases
-        print answers[:10]
-        return answers[:10]
+        print sorted(set(answers), key=lambda x: answers.index(x))[:10]
+        return sorted(set(answers), key=lambda x: answers.index(x))[:10]
 
 def namedEntitySearch(NamedEntities, term):
     entityList = []
@@ -176,7 +179,7 @@ with codecs.open("qadata/train/questions.txt", encoding = 'utf-8') as question_f
 		qnum = question_list[i].split()[-1]
 		question = preprocess(question_list[i+1], getstopwords=True)
 		questions[qnum] = question
-                #print questions[qnum]
+        print questions[qnum]
 #questions is a dictionary {question#: (question tokens,stopwords)}
 		
 finalanswers = []
@@ -226,6 +229,7 @@ for qnum in range(0, 150):
                         for best_sentence in bestngram:
                                 #stanford entity tag
                                 best_ne = st.tag(best_sentence)
+                                #best_ne =[]
                                 pos_tag = nltk.pos_tag(best_sentence)
                                 NamedEntities.append(best_ne)
                                 PosTag.append(pos_tag)
