@@ -14,11 +14,11 @@ from nltk.tokenize import RegexpTokenizer
 tokenizer = RegexpTokenizer(r'\w+')
 snowball_stemmer = SnowballStemmer('english')
 stopword_list = stopwords.words('english') + [u'p']
-'''
-stanford_classifier = '/Users/michaelqi/Downloads/stanford-ner-2017-06-09/classifiers/english.all.3class.distsim.crf.ser.gz'
+
+stanford_classifier ='/Users/michaelqi/Downloads/stanford-ner-2017-06-09/classifiers/english.muc.7class.distsim.crf.ser.gz'
 stanford_ner_path = '/Users/michaelqi/Downloads/stanford-ner-2017-06-09/stanford-ner.jar'
 st = StanfordNERTagger(stanford_classifier, stanford_ner_path, encoding='utf-8')
-'''
+
 
 def preprocess(s, getstopwords=False, stopwords=False, text = False):
         #given s, tokenize and remove punctuation
@@ -61,12 +61,9 @@ def find_best_passages(textlist, questions, qidlist):
         for e in best:
         	for i in range(len(e)):
         		if i is not 0:
-        			finalstring = ""
-        			for text in e[i]:
-        				finalstring+= " "+text
-        			finallist.append([finalstring])
-        print finallist
-	return best
+        			finallist.append(e[i])
+        #print finallist
+	return finallist
 
 '''
 since the vector are [1 1 1 1] *[ x y z w] where x,y,z,w are the frequency of each word from the wordbag, 
@@ -93,7 +90,7 @@ def compare_ngram(text, wordbag, score):
                         frequency.append(e)
 	return frequency
 
-def heuristic_list(best_ne, question):
+def heuristic_list(best_ne, pos_tag, question):
         '''
         people = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "PERSON"]
         gpes = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "GPE"]
@@ -106,22 +103,56 @@ def heuristic_list(best_ne, question):
         facility = [subtree[0][0] for subtree in best_ne if isinstance(subtree, nltk.tree.Tree) and subtree.label() == "FACILITY"]
         nouns = [leaf[0] for leaf in best_ne if not isinstance(leaf, nltk.tree.Tree) and "NN" in leaf[1]]
         '''
+        NamedEntities = []
+        for listoftokens in best_ne:
+            previous = ("", 'O')
+            string = ""
+            for element in listoftokens:
+                if element[0] not in question[0]:
+                    if element[1] != 'O' and previous[1] != 'O':
+                        if previous[1] == element[1]:
+                            string += " "+element[0]
+                            previous = element
+                        elif previous[1]!= 'O':
+                            NamedEntities.append((string, previous[1]))
+                            string = str(element[0])
+                            previous = element
+                    elif element[1] != 'O' and previous[1] == 'O':
+                            string = str(element[0])
+                            previous = element
+                    elif element[1] == 'O' and previous[1] !='O':
+                            NamedEntities.append((string, previous[1]))
+                            previous = ("", 'O')
+                            string = ""
+
         answers = []
         if "where" in question[1]:
-                answers = locations+facility
+                answers = namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "PERSON")
         elif "who" in question[1]:
-                answers = people+org
-                print question
-                print answers
+                answers = namedEntitySearch(NamedEntities, "PERSON")+namedEntitySearch(NamedEntities, "ORGANIZATION")
         elif "when" in question[1]:
-                answers = times+dates
+                answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
         elif "how" in question[1]:
-                answers = money+percent
+                answers = namedEntitySearch(NamedEntities, "PERCENT")+namedEntitySearch(NamedEntities, "MONEY")+namedEntitySearch(NamedEntities, "TIME")
         elif "name" in question[0]:
-                answers = people+locations+gpes+org+facility
-        answers += nouns
-        return answers[:1]
-             
+                answers = namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "PERSON")
+        elif "date" in question[0] or "time" in question[0]:
+                answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
+        elif "what_is" in question[1]:
+                answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
+        else:
+                answers = namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "PERSON")
+        #answers += nouns
+        print answers[:10]
+        return answers[:10]
+
+def namedEntitySearch(NamedEntities, term):
+    entityList = []
+    for element in NamedEntities:
+        if element[1] == term:
+            entityList.append(element[0])
+    return entityList
+
 
 #question processing: remove stop words from question
 with codecs.open("qadata/train/questions.txt", encoding = 'utf-8') as question_file:
@@ -132,7 +163,7 @@ with codecs.open("qadata/train/questions.txt", encoding = 'utf-8') as question_f
 		qnum = question_list[i].split()[-1]
 		question = preprocess(question_list[i+1], getstopwords=True)
 		questions[qnum] = question
-                print questions[qnum]
+                #print questions[qnum]
 #questions is a dictionary {question#: (question tokens,stopwords)}
 		
 finalanswers = []
@@ -171,21 +202,22 @@ for qnum in range(0, 150):
                         #print parsedtextlist
                         bestngram = find_best_passages(parsedtextlist, questions[qnum][0], qidlist)
         				#print bestngram
-                        qidtextTuple = zip(qidlist, parsedtextlist[1:])
+                        #qidtextTuple = zip(qidlist, parsedtextlist[1:])
         				#print(qidtextTuple)
 
                         #answer formation
                         #Find the sentence that gave highest score (some way of tracking this)
-                        answers = []
+                        NamedEntities = []
+                        PosTag =[]
                         #ideally we want to pass into the entire center
-                        '''
-                        for e in bestngram:
-                                for best_sentence in e:
-                                        #stanford tag
-                                        best_ne = st.tag(best_sentence)
-                                        answers += heuristic_list(best_ne, questions[qnum])
+                        for best_sentence in bestngram:
+                                #stanford entity tag
+                                best_ne = st.tag(best_sentence)
+                                pos_tag = nltk.pos_tag(best_sentence)
+                                NamedEntities.append(best_ne)
+                                PosTag.append(pos_tag)
+                        answers = heuristic_list(NamedEntities, PosTag, questions[qnum])
                                         
-                        '''
                         '''
                         count the number of named entity. so (Bolivia: location), make a list of all these named entity
                         make a list of if then statements of sample heuristic. so if "where" then prioritize location entity.
@@ -194,7 +226,6 @@ for qnum in range(0, 150):
                         #answers = heuristic_list(best_ne, questions[qnum])
                         finalanswers.append("qid {}".format(qnum))
                         finalanswers += answers
-                        break
                         #best_sentence = "soya agricultural exports roads rather railways become focus attention Bolivia".split()
                         #Stanford Named Entity Tagger
                         
