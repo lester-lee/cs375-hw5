@@ -185,11 +185,7 @@ with codecs.open("qadata/train/questions.txt", encoding = 'utf-8') as question_f
 #questions is a dictionary {question#: (question tokens,stopwords)}
 		
 finalanswers = []
-'''
-def closestdistance():
-def scoreaccount():
-        pass
-'''
+
 #passage retrieval
 for qnum in range(0, 150):
         qnum = str(qnum)
