@@ -56,7 +56,7 @@ def find_best_passages(textlist, questions, qidlist):
 		'''	
                 best.append(compare_ngram(text, questions, score))
         best = list(filter(None, best))
-        best = sorted(best, reverse = True)[:5]
+        best = sorted(best, reverse = True)[:3]
         finallist = []
         for e in best:
         	for i in range(len(e)):
@@ -138,6 +138,8 @@ def heuristic_list(best_ne, pos_tag, question):
                 answers = namedEntitySearch(NamedEntities, "ORGANIZATION")+namedEntitySearch(NamedEntities, "LOCATION")+namedEntitySearch(NamedEntities, "PERSON")
         elif "date" in question[0] or "time" in question[0]:
                 answers = namedEntitySearch(NamedEntities, "DATE")+namedEntitySearch(NamedEntities, "TIME")
+        #elif "is" in question[1] and question[1][question[1].index("is")-1] == "what":
+        #		answers = [] 
         else:
                 answers = namedEntitySearch(NamedEntities, "ORGANIZATION")[:2]+namedEntitySearch(NamedEntities, "LOCATION")[:2]+namedEntitySearch(NamedEntities, "PERSON")[:2]
 
@@ -156,7 +158,7 @@ def heuristic_list(best_ne, pos_tag, question):
                             nounphrases.append(" ".join(tempphrase))
                             tempphrase = []
         nounphrases = sorted(set(nounphrases), key = nounphrases.count, reverse=True)
-        nounphrases = [n for n in nounphrases if not n in ["<",">", "P", "the", '']]
+        nounphrases = [n for n in nounphrases if not n in ["<",">", "P", "the", '', "'s"]]
         nounphrases = [n for n in nounphrases if not n in question[0]]
         answers += nounphrases
         print sorted(set(answers), key=lambda x: answers.index(x))[:10]

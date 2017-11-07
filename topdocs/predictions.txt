@@ -1,14 +1,14 @@
 qid 0
 Kings
+Los Angeles Kings
 Edmonton
 Bruce McNall
 Pocklington
-'s number
+year
+sport
+'s
 tough
 people
-'s shoulders
-'s private plane
-hockey oblivion
 qid 1
 1990 Foundation
 Museum
@@ -16,32 +16,32 @@ Arles
 Amsterdam
 Rijksmuseum van
 Frits Becht
+van
+works
 years
 drawings
-van
-exhibit
 qid 2
 Java
 lamb
 vanilla beans
+pepper
 tendons
+salt
+pound carrots
 shin
 allspice
 assorted spices
-metric tons
-chewy quality
-crib sheet
 qid 3
 Tuesdays
 Today
+12th Century
 trees
+words
+yule
 old
 fewer bunches
 old trees
-local mistletoe mixed
-sales
-high
-year
+' beloved story
 qid 5
 Michigan State 14
 Michigan State
@@ -50,25 +50,25 @@ Mich.
 Hyland Hickson
 Tico Duckett
 yards
+3-3
 touchdowns
 defense
-times
 qid 7
 sausage
 sweet Italian bread
 selections
 Italian herb potatoes
 qid 8
+Russia
+Japan
 report
+tests
+radioactivity
 iodine
 tritium
 radioactive iodine
 Scientists
 workers
-environment
-experiment
-reactors ' nuclear fuel
-test
 qid 9
 Sistine Chapel
 's
@@ -77,20 +77,20 @@ Adam
 Fabrizio Mancinelli
 Julius II
 arms
-own fresco
+restoration
+refined
 frescoes
-fresco
 qid 10
 Davis
-actresses
-other chemical hair treatments
-men
-skin
-shape
-texture
-' expertise
+show
 gray hair
-part
+other actors
+next show
+shape
+skin
+studio hairdressers
+texture
+actors
 qid 11
 National Zoo
 Smithsonian
@@ -114,38 +114,38 @@ Center
 FBI
 tapes
 qid 13
+Universal Time
+Greenwich Mean Time
+Bank of
+Westminster Bank (
+NatWest )
 Ben
 bell
 watch
 hours
-kitchen wall clock
 microwave clock
-radio clock
-telephone clock
-stove clock
-following
 qid 14
+Utah
 Yersinia pestis
+House
+Congress
 guinea pigs
+mice
+pestis
+h
 rats
 giraffes
-proteins
-mice
-hamsters
-cows
-computer
-female guinea pigs
 qid 15
 Integrated Genetics Inc.
 Office of Technology Assessment
 anemia
 's disease
+technique
+phenylketonuria
 cancer drug
+blood 's ability
+cancer
 growth hormone deficiency
-estimates
-number
-muscular
-deficiency
 qid 17
 road
 home runs
@@ -162,34 +162,34 @@ Bethel
 Saugerties
 New York
 Ventures
+Futu Futu
+today
 T-shirts
 area
 festival
-today
 map
-famous arts colony
 qid 19
 Sotheby
 enthusiast
+San Francisco
 Andy Warhol
 Mark Rothko
+'s
+drawings
 exemplary
+unconscious ' obscures
 controversial recent
-catalogue
-art circles
-American artist
-thanks
 qid 20
 Derby
+El Camino Real Derby
 Lexington
 East
 John Henry
+winner
 next year 's
 '
-winner
 year 's
 second
-races
 qid 21
 Martin Bell
 ABC
@@ -197,21 +197,21 @@ New York
 U.S.S.R
 Live
 Stage
-rock memorabilia display
-tantrum
-music star
+music special
 inscription
+inaccurate image
+music star
 qid 22
 10.2 percent
 11.4 percent
 13.4 percent
+None
+-1
+-2
 census
+seats
+decade
 many places
-people
-population counts
-case
-likely
-states such
 qid 24
 Ilo
 Mato Grosso
@@ -219,76 +219,76 @@ Brazil
 Latin America
 Sanchez de Lozada
 Frei
+heart
 strategic hub
 seaports
 eventual shipment
-economic
 qid 26
 Cincinnati
+U.S.
+Wilmington
+Del.
 & amp ;
 & amp
-amp
-super-absorbent
-'s design
-diapers
-Dallas-based manufacturer
-Pampers
-court papers
+Keebler Co.
+Nabisco Brands Inc.
+Frito-Lay Inc.
+Kimberly-Clark
 qid 28
 National Cancer Institute
 Robert N. Hoover
 long-term exposure
 report
 fair-skinned individuals
-frequent
 exposure
-Squamous cell skin cancer
-common forms
-basal cell
+skin cancer
+frequent
+year
+melanoma
 qid 29
 times
 concrete
 volume
+4.7-million contract
 stores
+brief illness
 covers
+system
 feet
-headwaters
-earth
-border
-mid-1930s
+engineering
 qid 30
 William Gibson
-computer
-matrix
-Vancouver-based author
-best-selling science fiction novel
-ephemeral otherworld
-'collective hallucination
+Broadband
+number
 Sci-Fi writer
-fresh perspective
-mid-1980s
+bandwidth
+computer
+standard voice grade channel
+term cyberspace refers
+global electronic web
+matrix
 qid 31
 International Resuscitation Research Center
 Covina
 Peter Safar
 Paul Miller
 percent
+more
+training
 patients
 time
-physician
-none
-university 's
+help
 qid 34
 Agent Orange defoliant
 Vietnam
+Persian Gulf
+Iraq
+Najaf
 Henderson
+Saddam
+people
 use
-chemical weapon
-study
-reports
-years
-defoliant
-reason
+napalm bombs
 qid 35
 Headline News
 Turner Broadcasting System Inc.
@@ -296,10 +296,10 @@ Bernard Shaw
 Steve Haworth
 p.m.
 networks
-reports
-'s parent company
-extra viewers
-vice president
+newscast
+spokesman
+program
+role
 qid 36
 James Boswell
 Johnson
@@ -310,7 +310,7 @@ Redford
 Mrs Lennox
 David Garrick
 Richardson
-Hollywood
+K. Doe
 qid 37
 Maria Prado
 Magdalena Ortega
@@ -318,33 +318,33 @@ Linda Bonniksen
 American Red Cross
 Salvation Army
 Pacific Bell
-telephone service
+Public Utilities Commission
 problem
-many people
-new center
+callers
+telephone service
 qid 39
 qid 40
 David
 Charlie
 Peter
 A. Politz
+Michael
+Johann (
+Joann ) Carlo
+Stram
+McCoy Tyner
 North American Ventures Inc.
-International Inc.
-Gabelli Asset Management Co. North American
-A. Copeland Enterprises Inc.
-roadside watermelon
-attorney
 qid 41
 Sam
 Paul Carter
 Wal-Mart
-profitable
-discount stores
-Wal-Mart stores
-'s other stores
-Hypermart-USA unit
+3 Hypermart USA
+Hypermart USA
+'s
+clubs
+units
 company
-same time last year
+Wal-Mart stores
 qid 43
 21st Annual Gospel Music Association Dove
 Christ Mass Choir
@@ -358,26 +358,26 @@ Beau Williams
 Russ Taff
 qid 45
 Cedars Sinai Hospital
+Central Coast
 NEW YORK
+Saratoga
 Christina Fulton
 Francis Ford Coppola
-/DATELINE
 own
-famous uncle
-he's
-movie roles
 's publicist
+baby boy
+he's
 qid 46
+CEDAM International
 Babylon
 King Nebuchadnezzar
 Qait Bey
-king
+underwater wonders
+negligence
+classic
+concerted effort
+mistreatment
 legendary
-10th-century fortress
-horizon
-palace
-6th-Century
-multimillion-dollar restoration
 qid 47
 Clark Giants
 Bud Black Giants
@@ -393,13 +393,13 @@ qid 48
 Merck
 Du Pont
 's disease
-major treatment
-unusual arrangement
-other products
 market
+amp
+major treatment
+high blood pressure
+other products
+unusual arrangement
 hyper-tension drug
-hypertension drug
-exclusive North American marketing rights
 qid 49
 Canada
 Western Europe
@@ -407,65 +407,65 @@ Washington
 D.C.
 Vietnam
 San Francisco
+Satan
 New York Times
 Humber College of Applied Arts and Technology
 Canadian Council of Churches
-Our Lady of Enchantment
 qid 50
 White House
 Eureka College
 Illinois
 Edward Malloy
 Reagan
+graduate
 words
 family
+steroids
 football team
-education
-blue
 qid 51
 children
-'s success
-reggae overall
-rosy picture
-bitter court battle
-cancer
-'s mother
-seventh annual
-music publishers
 band
+cancer
+title cut
+music publishers
+sisters
+single
+legacy
+film
+various former co-workers
 qid 52
 Rundfunk
 Norddeutsche Rundfunk
+Kevin D. Mitnick
+Leonard DiCicco
+Stoll
 U.S. Defense Department
 Optimus
 NASA
 Strategic Defense Initiative
 Los Alamos National Laboratory
-Fermi National Accelerator Laboratory
-Doubleday
-computer hackers
 qid 53
 Jane Pauley
 Deborah Norville
 Paula Zahn
 Sullivan
+Joan Lunden
 NBC
 ABC
 Disney World
 CBS
-news segments
-Today
+Whittle Communications
 qid 54
 New Testament
 SDSM
 Macedonia
 Seth Kinast
 David Letterman
-identity card
-abilities
-adult conversations
-reservations
-globe
+letters
+q
+silent
+addition
+tu
 qid 55
 Department of Housing and Urban Development
 All-American Realty
@@ -482,34 +482,34 @@ ABC
 CBS
 Cody Newton
 Frank
+wife
 birth
-boy
-sister
-brain surgery
-hostess
-pounds
+sportscaster
+one-half hours
+ounces
+back
 qid 57
+North America
+Israel
 Finsch 2.68m tonnes
 Russian Federation
+Lac de Gras
+Central Selling Organisation
 carats
 tonnes
-mining
-diamond centre
-monopoly
 gem diamonds
-exclusive rights
-Reports
+cent
 qid 58
 Time Warner Inc.
 Kmart Corp.
 Alexis
-associate style editor
-last week
-rough start
+Seegan
 how-to book author
+presence
+new magazine
+fish
 's daughter
-taste arbiter
-spokeswoman
+books
 qid 62
 Henson
 Kermit
@@ -517,10 +517,10 @@ Mickey Mouse
 Jim Henson
 Gonzo
 Walt Disney World
+local
 creator
 three-dimensional settings
 humans
-trenches
 qid 63
 D-Ohio
 Long Beach
@@ -534,26 +534,26 @@ hazardous materials shipments
 federal
 qid 65
 $ 600
+human chorionic gonadotropin
 normal pregnancy
-head
-woman
-fertilized egg
-normal human
-cells
-prenatal care
-delivery
-subsidiary
+hormone
+breast cells
+age
+tamoxifen
+long
+immune system
+alternative
 qid 66
+Piccadilly Circus
+Madame Tussaud
 Mediterranean Basin
 Egypt
 John Matthews
 Tony Zoanetti
+year
 worm attraction
-entrepreneurs
-region
-tourist officials
-miles
-major tourist attraction
+18-million rock
+less
 qid 68
 Kellogg Co.
 New York
@@ -561,74 +561,76 @@ Battle Creek
 Williams
 claim
 long way
+nice change
 's claim
 cop
 new law _
-pep
 qid 69
+Jane
+Myra Breckinridge
 real
 stunned transcriber
 '
 office
 best song
 descant
-next morning
-right
-pair
-'Peace
+lot more
+include
 qid 70
+Muenster University
+Brigham and Women 's Hospital
+Austria
+Eastern Europe
+O'Donnell
 second book
-basis
-excellent historian
-historian
-'s program
-'s political
-world
-military plans
+'s
+shot
+reference
+people
 qid 72
 Gabriel
 James Earl Jones
 George Lucas
 Klein
+Mickey Mouse
+Star Wars
 voice
-helmet
-kind
 costume
-actor
-credits
+helmet
+microphone
 qid 73
 George Bush
 William Conrad
 Joe Penny
 Styles
 CBS
-local TV news operation
+many observers
+reliable ratings entry
 network 's best freshman program
 other series
 upcoming new show
-reliable ratings entry
 qid 74
 Manhattan
+Netherlands
+New York
+Washington
 Post
 Alfred A. Knopf Inc.
+New York Post
+New York Post Co.
 editor
-business
-senior editor
-monthly 's launch
-years
-spokeswoman
-years old
+dispute
 qid 75
 North
+House
 R-Va.
 Virginia
 Stonewall Jackson
-move
-number
-battlefield site
-approval
+Hodel
 roads
-troops
+park
+bill
+new roads
 qid 76
 Academia Nacional De
 International Institute Of
@@ -636,54 +638,54 @@ San Juan
 Mary Ann
 Ponce
 amp
-Tri-county
-Presbyterian
-stubby mountains
+'s
 100-mile range
+stubby mountains
+general
 qid 77
+'s
+'s eyes
+head
+clothes
+bridge
+smaller
 shoes
 doll owners
+defined
 hair bows
-son
-sleep
-Brazilian
-first year
-addition
-companions
-pets
 qid 78
 United States
 ARKANSAS
 people
 damage
+least
+heavy rains
 banks
-rivers
-states
-bridges
-benign climate
-flood
+bridge
+dense fog
+eastern city
 qid 79
 Brentwood
 Los Angeles
 zip code
-city
+bar code symbol
 postmaster general
-north
+addresses
 century
 cents
-11-digit zip code
+current five-digit zip code
 years
 qid 80
+Scotland
 Douglas Hyde
 Deaglan de Breadun
 percent
+Gaelic language classes
 dead
+Gaelic speakers
 Bilingual workplace signs
 respect
-Irish language
-national identity
-ideas
-overwhelming favorite
+Gaelic culture
 qid 81
 Arthur Penn
 Clyde
@@ -704,52 +706,52 @@ Jones
 Surfrider
 Malibu
 Calif. Volleyball
-swimming
-summer
+area 's
+golf courses
 qid 83
 Monday
 night
-opera
-music other
-categorization
-festival director
 Bruckner
-recital
+'s
+opera
+inclined interpreters
+festival director
 re-writing
 years
+categorization
 qid 84
 Jodie Foster
 Lektor
 Jonathan Demme's
 Clarice Starling
+Roger Corman
+Starling
+Anthony Hopkins
+Jonathan Demme
 Entertainment Data Inc.
 FBI
-trainee
-dungeon
-Teenage
-intrepid
 qid 86
 NutraSweet
 Monsanto
 DSM N.V.
 Tosoh Corp.
+NutraSweet Co.
 Boston
 U.S. Holland
 Heerlen
 Tokyo
 Europe
-U.S.
 qid 87
 Health Department
 Niagara
 Cuba
+Reagan
+Walesa
 man
-portion
-life
 neighborhood
 family
-fine
-comparable areas
+people
+administration
 qid 88
 Caracas
 Bolivia
@@ -757,21 +759,21 @@ Colombia
 Ecuador
 Peru
 Latin America
-EC
-today
-commissioner
-countries
+Brazil
+Uruguay
+Argentina
+Chile
 qid 89
 Los Angeles County Superior Court
 Playboy
 Ciccone
 Louise Ciccone
-stormy three-year marriage
-nuptials
+Martika
 irreconcilable differences
-singer 's former name
-sing lyrics
-nude photographs
+restoration
+month
+magazines
+singer 's real name
 qid 90
 Productions Inc.
 Campaign Dynamics
@@ -779,32 +781,32 @@ Tokyo
 Japan
 David Hirsch
 Productions
-syndication packages
-tour packages
 series
-years
+American
+own
+syndication packages
 qid 91
 Honda
 Honda Motor Co.
 US
 Milwaukee
 Harley
+Fred Jordan
+'We
 engine reliability
-numbers
-bankruptcy
-city
-chief import
+old company
+mission
 qid 92
 Billy
 Micelli
 Angela Bower
 Judith Light
+(
+Angela ( Judith Light
 show
-live-in housekeeper
-TV characters
-end
-romantic
-season
+tough
+something other
+creepy softness
 qid 93
 Marco Entertainment
 USOC
@@ -812,65 +814,65 @@ U.S.
 Ukraine
 Michael Goldberg
 Tonya Harding
-runner
-figure skaters
-football player
-year
+'s
+chance
+world
+figure skater
 qid 94
 Merck & amp
+Merck Sharp Dohme
+the Food and Drug Administration
+FDA
+West Point
+Pa.
 Brunell
-chicken pox
-new whooping cough vaccine
-less risk
-nation 's first
-side effects
-federal approval
-major hope
-amp
+Faye Peterson
+Gary Bruell
+Peterson
 qid 95
 Disney
 Global Film Equity
+Star Trek Generations
 US
 Mina Tannenbaum
 Katzenberg
 Richard Grand-Jean
+box office
 hit
 company
-success
-middle section
 qid 99
 1989
-league
-first cards
-season
-top-selling football cards
-unsuccessful
-trademark
+many millions
+vice president
 licensee
 Dallas-based
-merger
+player
+unsuccessful
+best
+lottery game
+different way
 qid 100
 Stevie Nicks
 Einstein
 Dian Fossey
+Gardner
 The International Tribute
 National Geographic
 Institute
-education projects
-popularity
-spent lecturing
-mysterious death
+Tucson Board of Adjustment
+University of Southern California
+naturalist
 qid 101
 Princeton University
 League of Nations
 United States
+Prague
 Arthur Link
+Bush
 historian
+government
+'s name
 observance
-office
-series
-'s behavior
-brain
 qid 102
 Montreal Canadiens
 Toronto
@@ -889,43 +891,43 @@ Meyers
 people
 soft drink makers
 first time
+months
 escalation
 giant soft drink market
 taste
-diet drinks
 qid 104
 1985
 September
 June 30 , 1989
 1991.
+1990
 several reasons
-lottery sales
-chance
-new director
-'s decline
-last fiscal year
+sales
+lottery association
+lottery revenues
+'s lottery
 qid 105
+Santa Clause
 CHILES EN NOGADA
+Casaba
+Crenshaw
 cup
 teaspoons
 teaspoon ground cinnamon
+kumquats
 cloves garlic
-cheese
-currants
-hazelnut oil
-apple
-cup half
+quince
 qid 106
 Charles Windsor
+Elizabeth II
+'The
+national identity
+modern times
 other realms
-obsession
-tendency
-lid
-slow
-candidate
-media
-suffocating elements
-ministers
+risk
+culture
+own ears
+trifle
 qid 108
 Bonney
 Lincoln Sheriff Pat Garrett
@@ -938,90 +940,90 @@ Ash Upson
 Walter Noble Burns
 Robin Hood
 qid 109
+Lloyd Chiate
+Chiate
+Garrett
+Holly Springs
 Oak Ridge
-stunned transcriber
-hit
+many settings
 office
-best song
+show
+influence
 years
-next morning
-pair
-country classic
-best song anybody
 qid 111
 David Kirk
 Jim Bolger
 Coventry
-strongest
 best
-adviser
-British rugby
+squad
+strongest
+states
 second
-union
-first world cup
+paper
+captain
 qid 112
 1976
+pornographic film
+career
+explicit movie
+'s own hatred
 lips
+Jewish world
 obeisance
 lead
-'s diner party
-poet
-speeded-up poetry competition
-life
-humour hints
-pornographic film
+impact more ironic
 qid 113
 New York Times
 U.S.
 America
 IV
-novel 's portrayal
-reactionary
-afraid
+Frank Galati
 political tract
-vicious
-70,000-word precursor
+smart-alec
+novel 's portrayal
+afraid
+much
 qid 114
 Seuss
 Alan King
 Calvin
+Magoo
+Carol
+Charlie Brown
 Obendorf Boys Choir
 Vestron
 United Entertainment
 tape
-sounds
-presents
-decorations
 qid 115
 Smithsonian
 Revolution
 Mattel
 Scarlett O'Hara
-strength
+Kirsten
+Rowland
 's 34-year old fashion doll
-core brands
-success
-movie
-acts
+sales
+crossover
+eight-year-old
 qid 116
-single code
 use
-lower right-hand corner
-bottom
-traditional bar code
+%
 bar code
 bar codes
-result
-characters
-bar code sorters
+single code
+letter mail
+bar code symbol
+two-thirds
+one-third
+businesses
 qid 117
 American Eagle
 United Express
 Airport
 Richard Alatorre
-terminal radar approach control centers
-control towers
+Smith
+duty
 resident
-political ally
-flight standards district offices
 offerings
+facilities
+officials

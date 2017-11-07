@@ -21,7 +21,6 @@ drawings
 van
 exhibit
 qid 2
-Java
 lamb
 vanilla beans
 tendons
@@ -31,6 +30,7 @@ assorted spices
 metric tons
 chewy quality
 crib sheet
+report
 qid 3
 Tuesdays
 Today
@@ -136,8 +136,6 @@ cows
 computer
 female guinea pigs
 qid 15
-Integrated Genetics Inc.
-Office of Technology Assessment
 anemia
 's disease
 cancer drug
@@ -146,6 +144,8 @@ estimates
 number
 muscular
 deficiency
+genetic cause
+Inherited
 qid 17
 road
 home runs
@@ -199,8 +199,8 @@ Live
 Stage
 rock memorabilia display
 tantrum
+'s
 music star
-inscription
 qid 22
 10.2 percent
 11.4 percent
@@ -213,16 +213,16 @@ case
 likely
 states such
 qid 24
-Ilo
-Mato Grosso
-Brazil
-Latin America
-Sanchez de Lozada
-Frei
 strategic hub
 seaports
 eventual shipment
 economic
+waterway
+port
+gas monopoly
+'s poorest countries
+metaphor
+foreign exchange
 qid 26
 Cincinnati
 & amp ;
@@ -235,8 +235,6 @@ Dallas-based manufacturer
 Pampers
 court papers
 qid 28
-National Cancer Institute
-Robert N. Hoover
 long-term exposure
 report
 fair-skinned individuals
@@ -245,6 +243,8 @@ exposure
 Squamous cell skin cancer
 common forms
 basal cell
+cell skin cancer
+squamous cell skin cancer
 qid 29
 times
 concrete
@@ -338,13 +338,13 @@ qid 41
 Sam
 Paul Carter
 Wal-Mart
+'s
 profitable
 discount stores
 Wal-Mart stores
 's other stores
 Hypermart-USA unit
 company
-same time last year
 qid 43
 21st Annual Gospel Music Association Dove
 Christ Mass Choir
@@ -390,8 +390,6 @@ Texas
 Toronto
 Seattle
 qid 48
-Merck
-Du Pont
 's disease
 major treatment
 unusual arrangement
@@ -400,6 +398,8 @@ market
 hyper-tension drug
 hypertension drug
 exclusive North American marketing rights
+order
+deal 's other aspect
 qid 49
 Canada
 Western Europe
@@ -412,16 +412,16 @@ Humber College of Applied Arts and Technology
 Canadian Council of Churches
 Our Lady of Enchantment
 qid 50
-White House
-Eureka College
-Illinois
-Edward Malloy
-Reagan
 words
 family
 football team
 education
 blue
+office
+school song
+sweater
+national champion
+graduate
 qid 51
 children
 's success
@@ -453,8 +453,8 @@ NBC
 ABC
 Disney World
 CBS
+'s
 news segments
-Today
 qid 54
 New Testament
 SDSM
@@ -630,16 +630,16 @@ approval
 roads
 troops
 qid 76
-Academia Nacional De
-International Institute Of
-San Juan
-Mary Ann
-Ponce
 amp
+'s
 Tri-county
 Presbyterian
 stubby mountains
 100-mile range
+husband
+region
+'s battle
+Horry-georgetown
 qid 77
 shoes
 doll owners
@@ -663,8 +663,6 @@ bridges
 benign climate
 flood
 qid 79
-Brentwood
-Los Angeles
 zip code
 city
 postmaster general
@@ -673,6 +671,8 @@ century
 cents
 11-digit zip code
 years
+turn
+street
 qid 80
 Douglas Hyde
 Deaglan de Breadun
@@ -740,9 +740,6 @@ Tokyo
 Europe
 U.S.
 qid 87
-Health Department
-Niagara
-Cuba
 man
 portion
 life
@@ -750,6 +747,9 @@ neighborhood
 family
 fine
 comparable areas
+polluted
+daredevil
+snag
 qid 88
 Caracas
 Bolivia
@@ -773,16 +773,16 @@ singer 's former name
 sing lyrics
 nude photographs
 qid 90
-Productions Inc.
-Campaign Dynamics
-Tokyo
-Japan
-David Hirsch
-Productions
 syndication packages
 tour packages
 series
 years
+estimated worth
+4.5-million contract
+other holdings
+other television production
+microphone
+trademark
 qid 91
 Honda
 Honda Motor Co.
@@ -812,10 +812,10 @@ U.S.
 Ukraine
 Michael Goldberg
 Tonya Harding
+'s
 runner
 figure skaters
 football player
-year
 qid 94
 Merck & amp
 Brunell
@@ -872,16 +872,16 @@ series
 's behavior
 brain
 qid 102
-Montreal Canadiens
-Toronto
-Joe Murphy
-Jimmy Carson
 Islanders
 man
 1989-90
 1987-88
 summer
 draft choices
+' season
+'s record
+playoffs
+1983-84
 qid 103
 W Brands
 New Coke
@@ -968,8 +968,8 @@ lead
 poet
 speeded-up poetry competition
 life
+'s
 humour hints
-pornographic film
 qid 113
 New York Times
 U.S.
@@ -1015,13 +1015,13 @@ result
 characters
 bar code sorters
 qid 117
-American Eagle
-United Express
-Airport
-Richard Alatorre
 terminal radar approach control centers
 control towers
 resident
 political ally
 flight standards district offices
 offerings
+facilities
+American
+officials
+terminal radar approach centers
