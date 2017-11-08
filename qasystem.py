@@ -179,7 +179,12 @@ with codecs.open("qadata/train/questions.txt", encoding='utf-8') as question_fil
 finalanswers = []
 
 # passage retrieval
-for qnum in range(0, 300):
+start = 0
+end = 300
+if len(sys.argv) >= 2:
+    start = int(sys.argv[1])
+    end = int(sys.argv[2])
+for qnum in range(start,end):
         qnum = str(qnum)
         if qnum in questions:
         	docname = "top_docs.{}".format(qnum)
