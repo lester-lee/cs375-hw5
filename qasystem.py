@@ -63,8 +63,6 @@ we can compute this by summing all the x,y,z,w together.
 the length of the vector is determined by the wordbag.
 this returns a list of tuples [(10gram, freq)...]
 '''
-
-
 def compare_ngram(text, wordbag, score):
         frequency = []
         maximum = 1
@@ -116,7 +114,7 @@ def heuristic_list(best_ne, pos_tag, question):
         elif "who" in question[1]:
                 answers = namedEntitySearch(
                     NamedEntities, "PERSON") + namedEntitySearch(NamedEntities, "ORGANIZATION")
-        elif "when" in question[1] or "year" in question[0]:
+        elif "when" in question[1] or "year" in question[0] or "date" in question[0] or "time" in question[0]:
                 answers = namedEntitySearch(
                     NamedEntities, "DATE") + namedEntitySearch(NamedEntities, "TIME")
         elif "how" in question[1] or "population" in question[0]:
@@ -125,9 +123,6 @@ def heuristic_list(best_ne, pos_tag, question):
         elif "name" in question[0]:
                 answers = namedEntitySearch(NamedEntities, "ORGANIZATION") + namedEntitySearch(
                     NamedEntities, "LOCATION") + namedEntitySearch(NamedEntities, "PERSON")
-        elif "date" in question[0] or "time" in question[0]:
-                answers = namedEntitySearch(
-                    NamedEntities, "DATE") + namedEntitySearch(NamedEntities, "TIME")
         else:
                 answers = namedEntitySearch(NamedEntities, "ORGANIZATION")[:2] + namedEntitySearch(
                     NamedEntities, "LOCATION")[:2] + namedEntitySearch(NamedEntities, "PERSON")[:2]
@@ -208,21 +203,17 @@ for qnum in range(start,end):
                                 tempstring = " ".join(texts)
                                 parsedtextlist.append(preprocess(tempstring,text =True))
 
-                    bestngram = find_best_passages(parsedtextlist, questions[qnum][0], qidlist)
+                    best_passage = find_best_passages(parsedtextlist, questions[qnum][0], qidlist)
+
                     NamedEntities = []
                     PosTag =[]
-                    for best_sentence in bestngram:
+                    for best_sentence in best_passage:
                             best_ne = st.tag(best_sentence)
                             pos_tag = nltk.pos_tag(best_sentence)
                             NamedEntities.append(best_ne)
                             PosTag.append(pos_tag)
                     answers = heuristic_list(NamedEntities, PosTag, questions[qnum])
 
-                    '''
-                    count the number of named entity. so (Bolivia: location), make a list of all these named entity
-                    make a list of if then statements of sample heuristic. so if "where" then prioritize location entity.
-                    if "what"
-                    '''
                     finalanswers.append("qid {}".format(qnum))
                     finalanswers += answers
 
